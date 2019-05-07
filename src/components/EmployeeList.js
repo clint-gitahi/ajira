@@ -16,8 +16,20 @@ import * as employeeActions from "../actions/employeeActions";
 import EmployeeItemList from "./EmployeeItemList";
 
 class EmployeeList extends Component {
-  static navigationOptions = {
-    title: "Employee List"
+  static navigationOptions = ({ navigation }) => {
+    const { params = {} } = navigation.state;
+
+    return {
+      title: "Employee List",
+      headerRight: (
+        <TouchableOpacity
+          style={{ marginRight: 10 }}
+          onPress={() => params.logout()}
+        >
+          <Text>Log Out</Text>
+        </TouchableOpacity>
+      )
+    };
   };
 
   state = { currentUser: null, loading: false };
@@ -46,6 +58,16 @@ class EmployeeList extends Component {
           "Failed to fetch Employee Data, Please Check your connection."
         );
       });
+
+    //
+    this.props.navigation.setParams({ logout: this.handleLogout.bind(this) });
+  }
+
+  handleLogout() {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => this.props.navigation.navigate("Auth"));
   }
 
   // opening the profile screen
