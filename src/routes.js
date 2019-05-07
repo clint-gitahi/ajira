@@ -5,7 +5,8 @@ import Landing from "./components/landing";
 import Loading from "./components/loading";
 import SignUpScreen from "./components/signup";
 import LoginScreen from "./components/login";
-import EmployeeListScreen from "./components/EmployeeList";
+import EmployeeList from "./components/EmployeeList";
+import Profile from "./components/Profile";
 
 const AuthStack = StackNavigator({
   Landing: { screen: Landing },
@@ -14,7 +15,7 @@ const AuthStack = StackNavigator({
 });
 
 const AppStack = StackNavigator({
-  EmployeeList: EmployeeListScreen
+  EmployeeList: EmployeeList
 });
 
 export default SwitchNavigator(
