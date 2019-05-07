@@ -5,7 +5,12 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 class Profile extends Component {
+  static navigationOptions = {
+    title: "Profile"
+  };
+
   render() {
+    console.log("profile props", this.props);
     return (
       <View>
         <Text>dfadfd</Text>
@@ -14,4 +19,4 @@ class Profile extends Component {
   }
 }
 
-export default connect(null)(Profile);
+export default Profile;

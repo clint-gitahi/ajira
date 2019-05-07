@@ -50,7 +50,7 @@ class EmployeeList extends Component {
 
   // opening the profile screen
   openProfile = item => {
-    console.log(item);
+    this.props.navigation.navigate("Profile", item);
   };
 
   noDisplay() {
