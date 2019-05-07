@@ -74,6 +74,11 @@ export default class Login extends Component {
   }
 }
 const styles = StyleSheet.create({
+  loadContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
   container: {
     flex: 1,
     justifyContent: "center",
