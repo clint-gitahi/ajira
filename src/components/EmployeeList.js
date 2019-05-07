@@ -4,7 +4,8 @@ import {
   Text,
   View,
   ActivityIndicator,
-  FlatList
+  FlatList,
+  TouchableOpacity
 } from "react-native";
 import firebase from "react-native-firebase";
 import Toast from "react-native-simple-toast";
@@ -12,6 +13,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import * as employeeActions from "../actions/employeeActions";
+import EmployeeItemList from "./EmployeeItemList";
 
 class EmployeeList extends Component {
   static navigationOptions = {
@@ -40,15 +42,42 @@ class EmployeeList extends Component {
       })
       .catch(error => {
         this.setState({ loading: false });
-        getEmployeeFail("Failed to fetch Employee Data");
+        getEmployeeFail(
+          "Failed to fetch Employee Data, Please Check your connection."
+        );
       });
   }
 
-  renderEmployeeList() {
-    return this.props.menus.map((item, index) => {
-      console.log(item);
-    });
+  // opening the profile screen
+  openProfile = item => {
+    console.log(item);
+  };
+
+  noDisplay() {
+    return <View />;
   }
+
+  renderSeparator = () => {
+    return (
+      <View
+        style={{
+          height: 1,
+          width: "100%",
+          backgroundColor: "#CED0CE"
+        }}
+      />
+    );
+  };
+
+  _keyExtractor = (item, index) => index.toString();
+
+  _renderEmployee = ({ item, index }) => (
+    <TouchableOpacity onPress={() => this.openProfile(item)}>
+      <Text>Name: {item[8]}</Text>
+      <Text>Dept: {item[14]}</Text>
+      <Text>Div: {item[15]}</Text>
+    </TouchableOpacity>
+  );
 
   render() {
     console.log(this.props);
@@ -63,10 +92,27 @@ class EmployeeList extends Component {
     } else {
       return (
         <View style={{ flex: 1 }}>
-          <FlatList
-            data={this.props.employees.employees}
-            renderItem={({ item }) => <Text />}
-          />
+          {this.props.employees.error !== "" ? (
+            <View
+              style={{
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center"
+              }}
+            >
+              <Text style={{ color: "red", textAlign: "center" }}>
+                {this.props.employees.error}
+              </Text>
+            </View>
+          ) : (
+            <FlatList
+              data={this.props.employees.employees}
+              renderItem={this._renderEmployee}
+              keyExtractor={this._keyExtractor}
+              ListEmptyComponent={this.noItemDisplay}
+              ItemSeparatorComponent={this.renderSeparator}
+            />
+          )}
         </View>
       );
     }
