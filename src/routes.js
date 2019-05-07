@@ -15,7 +15,8 @@ const AuthStack = StackNavigator({
 });
 
 const AppStack = StackNavigator({
-  EmployeeList: EmployeeList
+  EmployeeList: EmployeeList,
+  Profile: Profile
 });
 
 export default SwitchNavigator(
