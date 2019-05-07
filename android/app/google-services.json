@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "802005615018",
+    "firebase_url": "https://ajira-e4aaf.firebaseio.com",
+    "project_id": "ajira-e4aaf",
+    "storage_bucket": "ajira-e4aaf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:802005615018:android:1e6c0f96596d2e01",
+        "android_client_info": {
+          "package_name": "com.ajira"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "802005615018-4a764750dgdq7js5l94lore8khdm46p3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9_FUThCgkRIW_O13lkD9O01jxNFb3kZg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "802005615018-4a764750dgdq7js5l94lore8khdm46p3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
