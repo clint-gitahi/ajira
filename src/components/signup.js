@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import {
   StyleSheet,
   Text,
@@ -9,7 +9,13 @@ import {
 } from "react-native";
 import firebase from "react-native-firebase";
 
-export default class SignUp extends React.Component {
+export default class SignUp extends Component {
+  static navigationOptions = {
+    headerStyle: {
+      backgroundColor: "#80DEEA"
+    }
+  };
+
   state = {
     email: "",
     password: "",
@@ -46,12 +52,13 @@ export default class SignUp extends React.Component {
     } else {
       return (
         <View style={styles.container}>
-          <Text>Sign Up</Text>
+          <Text style={{ fontWeight: "bold" }}>Sign Up</Text>
           {this.state.errorMessage && (
             <Text style={{ color: "red" }}>{this.state.errorMessage}</Text>
           )}
 
           <TextInput
+            keyboardType="email-address"
             placeholder="Email"
             autoCapitalize="none"
             style={styles.textInput}
@@ -68,7 +75,7 @@ export default class SignUp extends React.Component {
             value={this.state.password}
           />
 
-          <Button title="Sign Up" onPress={this.handleSignUp} />
+          <Button title="Sign Up" onPress={this.handleSignUp} color="#fb9b03" />
         </View>
       );
     }
@@ -83,12 +90,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: "#ffffff"
   },
   textInput: {
     height: 40,
     width: "90%",
-    borderColor: "gray",
+    borderColor: "#FFE0B2",
     borderWidth: 1,
     marginTop: 8
   }

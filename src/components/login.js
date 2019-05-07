@@ -10,6 +10,12 @@ import {
 import firebase from "react-native-firebase";
 
 export default class Login extends Component {
+  static navigationOptions = {
+    headerStyle: {
+      backgroundColor: "#80DEEA"
+    }
+  };
+
   state = {
     email: "",
     password: "",
@@ -48,12 +54,13 @@ export default class Login extends Component {
     } else {
       return (
         <View style={styles.container}>
-          <Text>Login</Text>
+          <Text style={{ fontWeight: "bold" }}>Login</Text>
           {this.state.errorMessage && (
             <Text style={{ color: "red" }}>{this.state.errorMessage}</Text>
           )}
           <TextInput
             style={styles.textInput}
+            keyboardType="email-address"
             autoCapitalize="none"
             placeholder="Email"
             onChangeText={email => this.setState({ email })}
@@ -67,7 +74,7 @@ export default class Login extends Component {
             onChangeText={password => this.setState({ password })}
             value={this.state.password}
           />
-          <Button title="Login" onPress={this.handleLogin} />
+          <Button title="Login" onPress={this.handleLogin} color="#06b7cc" />
         </View>
       );
     }
@@ -82,12 +89,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: "#ffffff"
   },
   textInput: {
     height: 40,
     width: "90%",
-    borderColor: "gray",
+    borderColor: "#B2EBF2",
     borderWidth: 1,
     marginTop: 8
   }
