@@ -56,7 +56,9 @@ export default class Login extends Component {
         <View style={styles.container}>
           <Text style={{ fontWeight: "bold" }}>Login</Text>
           {this.state.errorMessage && (
-            <Text style={{ color: "red" }}>{this.state.errorMessage}</Text>
+            <Text style={{ color: "red", textAlign: "center" }}>
+              {this.state.errorMessage}
+            </Text>
           )}
           <TextInput
             style={styles.textInput}

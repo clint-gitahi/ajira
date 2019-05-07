@@ -13,7 +13,6 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import * as employeeActions from "../actions/employeeActions";
-import EmployeeItemList from "./EmployeeItemList";
 
 class EmployeeList extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -26,9 +25,12 @@ class EmployeeList extends Component {
           style={{ marginRight: 10 }}
           onPress={() => params.logout()}
         >
-          <Text>Log Out</Text>
+          <Text style={{ fontWeight: "700" }}>Log Out</Text>
         </TouchableOpacity>
-      )
+      ),
+      headerStyle: {
+        backgroundColor: "#80DEEA"
+      }
     };
   };
 
@@ -94,16 +96,19 @@ class EmployeeList extends Component {
   _keyExtractor = (item, index) => index.toString();
 
   _renderEmployee = ({ item, index }) => (
-    <TouchableOpacity onPress={() => this.openProfile(item)}>
-      <Text>Name: {item[8]}</Text>
+    <TouchableOpacity
+      style={styles.empStyle}
+      onPress={() => this.openProfile(item)}
+    >
+      <Text style={{ fontWeight: "800", fontSize: 16, color: "#000000" }}>
+        Name: {item[8]}
+      </Text>
       <Text>Dept: {item[14]}</Text>
       <Text>Div: {item[15]}</Text>
     </TouchableOpacity>
   );
 
   render() {
-    console.log(this.props);
-
     if (this.state.loading) {
       return (
         <View style={styles.container}>
@@ -113,7 +118,7 @@ class EmployeeList extends Component {
       );
     } else {
       return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
           {this.props.employees.error !== "" ? (
             <View
               style={{
@@ -145,7 +150,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: "#ffffff"
+  },
+  empStyle: {
+    marginLeft: "2%",
+    marginTop: "2%",
+    marginBottom: "2%"
   }
 });
 
