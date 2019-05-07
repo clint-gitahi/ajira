@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-
 import { View, Text } from "react-native";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 
 class Profile extends Component {
   static navigationOptions = {
@@ -11,9 +8,14 @@ class Profile extends Component {
 
   render() {
     console.log("profile props", this.props);
+    const { params } = this.props.navigation.state;
     return (
       <View>
-        <Text>dfadfd</Text>
+        <Text>{params[8]}</Text>
+        <Text>{params[14]}</Text>
+        <Text>{params[15]}</Text>
+        <Text>{params[16]}</Text>
+        <Text>{params[17]}</Text>
       </View>
     );
   }
