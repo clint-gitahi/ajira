@@ -27,7 +27,9 @@ class Profile extends Component {
           <Text style={{ fontWeight: "500", fontSize: 14 }}>
             Job type: {params[16]}
           </Text>
-          <Text style={{ fontWeight: "500", fontSize: 14 }}>{params[17]}</Text>
+          <Text style={{ fontWeight: "500", fontSize: 14 }}>
+            Industry: {params[17]}
+          </Text>
         </View>
       </View>
     );
